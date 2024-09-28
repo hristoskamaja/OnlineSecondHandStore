@@ -1,0 +1,65 @@
+﻿@using Online_Secondhand_Store.Models
+@{
+    ViewBag.Title = "Menu";
+}
+<link rel="stylesheet" href="~/Content/styleHome.css?v=4.0" />
+<link rel="stylesheet" href="~/Content/styleIndex.css?v=6.0" />
+
+<div class="row">
+    <h2 class="header">Menu</h2>
+    <div class="circle-menu">
+        <a href="@Url.Action("Index","Clothings")" class="category-item">
+            <img src="~/Content/clothing.jpg" alt="Clothing" />
+        </a>
+        <a href="@Url.Action("Index","Cars")" class="category-item">
+            <img src="~/Content/car.jpg" alt="Cars" />
+        </a>
+        <a href="@Url.Action("Index","Furnitures")" class="category-item">
+            <img src="~/Content/furnature.jpg" alt="Furniture" />
+        </a>
+        <a href="@Url.Action("Index","ComputerAndITEquipments")" class="category-item">
+            <img src="~/Content/laptop.jpg" alt="IT Equipment" />
+        </a>
+        <a href="@Url.Action("Index","ElectricalAppliances")" class="category-item">
+            <img src="~/Content/elektricniUredi.jpg" alt="Electrical Appliances" />
+        </a>
+    </div>
+</div>
+
+<style>
+    .circle-menu {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .category-item {
+        width: 350px;
+        height: 300px; /* Зголемена висина */
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #333;
+        background-color: #f0f0f0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative; /* Додадено за позиционирање */
+    }
+
+        .category-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-item img {
+            width: 330px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+</style>

@@ -1,0 +1,27 @@
+﻿@model Online_Secondhand_Store.Models.AddToRoleModel
+@{
+    ViewBag.Title = "Add User To Role";
+}
+
+<link rel="stylesheet" href="~/Content/styleHome.css?v=3.0" />
+<link rel="stylesheet" href="~/Content/styleIndex.css?v=5.0" />
+
+<div class="row" style="max-width: 500px; margin-top: 50px; margin-bottom: 10%; padding: 20px;">
+    <h2 class="text-center" style="font-family: Copperplate, Papyrus, fantasy; font-size: 24px; margin-bottom: 20px;">Add User To Role</h2>
+    @using (Html.BeginForm("AddUserToRole", "Account", FormMethod.Post, new { @class = "row" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label", style = "font-weight: bold;" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter user email", style = "margin-bottom: 15px;" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Role, htmlAttributes: new { @class = "control-label", style = "font-weight: bold;" })
+            @Html.DropDownListFor(m => m.Role, new SelectList(Model.roles), new { @class = "form-control", style = "margin-bottom: 20px;" })
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="buttons">Save</button>
+        </div>
+    }
+</div>

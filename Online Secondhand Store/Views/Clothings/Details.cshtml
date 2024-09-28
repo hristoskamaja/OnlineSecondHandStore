@@ -1,0 +1,49 @@
+﻿@model Online_Secondhand_Store.Models.Clothing
+
+@{
+    ViewBag.Title = "Details";
+}
+<link rel="stylesheet" href="~/Content/styleHome.css?v=3.0" />
+<link rel="stylesheet" href="~/Content/styleIndex.css?v=6.0" />
+<link rel="stylesheet" href="~/Content/styleDetails.css?v=3.0" />
+
+<div class="row">
+    <h2 class="header">Details</h2>
+    <dl class="content-class">
+
+        <dl class="picture-left">
+            <dd><img src="@Model.Image" alt="Clothing Image" /></dd>
+        </dl>
+        <dl class="text-right">
+            <dt>@Html.DisplayNameFor(model => model.Type)</dt>
+            <dd>@Html.DisplayFor(model => model.Type)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Size)</dt>
+            <dd>@Html.DisplayFor(model => model.Size)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Color)</dt>
+            <dd>@Html.DisplayFor(model => model.Color)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Material)</dt>
+            <dd>@Html.DisplayFor(model => model.Material)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Price)</dt>
+            <dd>@Html.DisplayFor(model => model.Price) €</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Condition)</dt>
+            <dd>@Html.DisplayFor(model => model.Condition)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+            <dd>@Html.DisplayFor(model => model.Description)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.PostedDate)</dt>
+            <dd>@Html.DisplayFor(model => model.PostedDate)</dd>
+        </dl>
+    </dl>
+    <div>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "details-actions" })
+        @Html.ActionLink("Add to Cart", "AddToCart", "Cart",
+     new { id = Model.Id, category = "Clothings", name = Model.Type, price = Model.Price, imageUrl = Model.Image },
+     new { @class = "details-actions" })
+    </div>
+</div>

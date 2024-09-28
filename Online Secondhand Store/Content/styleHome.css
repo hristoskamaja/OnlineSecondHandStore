@@ -1,0 +1,114 @@
+﻿/* Global styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(207, 207, 114);
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Ова ќе спречи хоризонтално скролување ако некои елементи излегуваат надвор */
+}
+
+/* Main content layout */
+.content-wrapper {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100vw; /* Осигурајте дека зафаќа 100% од видливата ширина */
+    height: 100vh; /* Осигурајте дека зафаќа 100% од видливата висина */
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+/* Text content styling */
+#textContent {
+    width: 50%; /* Половина од ширината за текст */
+    background-color: rgb(207, 207, 114);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+    #textContent h1 {
+        font-size: 4.3em;
+        color: #333;
+        font-family: Copperplate, Papyrus, fantasy;
+        font-weight: 400;
+        
+    }
+
+    #textContent h3 {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    #textContent input[type="button"] {
+        background-color: rgb(153, 102, 51);
+        width: 200px;
+        color: black;
+        padding: 15px 25px;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2em;
+        margin: 10px;
+        border-radius: 5px;
+        font-family: Copperplate, Papyrus, fantasy;
+        font-weight: bold;
+    }
+
+        #textContent input[type="button"]:hover {
+            background-color: #362b23;
+            color: white;
+        }
+
+/* Carousel container */
+.carousel-container {
+    position: relative;
+    width: 50%; /* Половина од ширината за каруселот */
+    height: 102%; /* Целосна висина */
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+/* Carousel images */
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    width: 100%; /* Гарантирајте дека каруселот зафаќа целосна ширина */
+}
+
+    .carousel img {
+        width: 100%;
+        height: 100%; /* Сликите да бидат растегнати на целосна висина */
+        object-fit: cover;
+    }
+
+/* Buttons for carousel */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 100;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 136px;
+}
+
+

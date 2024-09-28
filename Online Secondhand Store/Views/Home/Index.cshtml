@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Home";
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/styleHome.css?v=2.0" />
+</head>
+<body>
+
+    <!-- Main content -->
+    <main>
+        <div class="content-wrapper">
+            <!-- Left side: text content -->
+            <div id="textContent">
+                <h1>Welcome to NewOld Things</h1> <br />
+                <h3>Save money on eco-friendly products or sell items that you no longer need.</h3>
+                <input type="button" id="buttonShop" value="Shop Now" onclick="location.href='@Url.Action("MenuIndex", "Menu")'" />
+            </div>
+
+            <!-- Right side: carousel container -->
+            <div class="carousel-container">
+                <div class="carousel">
+                    <img src="~/Content/2.jpg" alt="Shop Image 1">
+                    <img src="~/Content/5.jpg" alt="Shop Image 2">
+                    <img src="~/Content/6.jpg" alt="Shop Image 3">
+                    <img src="~/Content/7.jpg" alt="Shop Image 4">
+                </div>
+                <button class="prev" onclick="prevSlide()">❮</button>
+                <button class="next" onclick="nextSlide()">❯</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Carousel script -->
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const carousel = document.querySelector('.carousel');
+            const items = document.querySelectorAll('.carousel img');
+            const totalItems = items.length;
+
+            // Поставете ја ширината на каруселот во зависност од бројот на слики
+            carousel.style.width = `${totalItems * 100}%`;
+
+            // Провери дали индексот е надвор од границите
+            if (index >= totalItems) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalItems - 1;
+            } else {
+                currentIndex = index;
+            }
+
+            // Помести го каруселот
+            carousel.style.transform = `translateX(${-currentIndex * (100 / totalItems)}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        // Автоматско менување на слики на секои 4 секунди
+        setInterval(() => {
+            nextSlide();
+        }, 2000.5);
+
+        // При иницијализација поставете ја ширината
+        window.onload = function () {
+            showSlide(0);
+        };
+
+    </script>
+</body>

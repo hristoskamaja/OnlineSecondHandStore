@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+<main aria-labelledby="title">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(207, 207, 114);
+            margin: 0;
+            padding: 0;
+        }
+
+        .containerContact {
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .contact-section {
+            background-color: rgb(255, 242, 194);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+            .contact-section h1 {
+                text-align: center;
+                color: saddlebrown;
+                font-family: Copperplate, Papyrus, fantasy;
+            }
+
+            .contact-section img {
+                display: block;
+                margin: 0 auto;
+                width: 150px; /* Adjust the width of the logo as needed */
+            }
+
+            .contact-section p {
+                font-size: 18px;
+                line-height: 1.6;
+                color: black;
+                font-weight: 400;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+
+                .contact-section p strong {
+                    color: #000;
+                }
+
+            .contact-section .highlight {
+                color: #9c7b56;
+                font-weight: 500;
+            }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+            .contact-info p {
+                margin: 5px 0;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .contact-info a {
+                color: saddlebrown;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .contact-info a:hover {
+                    text-decoration: underline;
+                }
+
+        .social-media {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+            .social-media a {
+                margin: 0 10px;
+                font-size: 18px;
+                text-decoration: none;
+                color: saddlebrown;
+            }
+
+                .social-media a:hover {
+                    color: #7b6444;
+                }
+    </style>
+</main>
+
+<body>
+    <div class="containerContact">
+        <div class="contact-section">
+            <img src="~/Content/logoT.png" alt="NewOld Things Logo"> <br />
+            <h1>Contact NewOld Things Team</h1>
+            <p>If you have any questions or would like to sell something on our platform, feel free to reach out to us via the following contact details. <br /> We are happy to assist you with any inquiries regarding our products or services!</p>
+
+            <div class="contact-info">
+                <p>Email: <a href="mailto:contact@newoldthings.com">contact@newoldthings.com</a></p>
+                <p>Phone: +123 456 7890</p>
+                <p>Website: <a href="https://www.newoldthings.com" target="_blank">www.newoldthings.com</a></p>
+            </div>
+
+            <div class="social-media">
+                <h3 style="font-family: Copperplate, Papyrus, fantasy;">Follow Us:</h3>
+                <a href="https://instagram.com/newwwwOldThingss" target="_blank">Instagram</a> |
+                <a href="https://facebook.com/NewwwOldThingss" target="_blank">Facebook</a>
+            </div>
+        </div>
+    </div>
+</body>

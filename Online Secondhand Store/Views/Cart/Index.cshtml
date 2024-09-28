@@ -1,0 +1,136 @@
+﻿@model List<Online_Secondhand_Store.Models.CartItem>
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<link rel="stylesheet" href="~/Content/styleHome.css?v=3.0" />
+<link rel="stylesheet" href="~/Content/styleIndex.css?v=5.0" />
+
+@if (Model.Count == 0)
+{
+    <p class="text-muted text-center" style="margin-top: 30px; font-size: 30px; margin-bottom:40%">Your cart is empty.</p>
+}
+else
+{
+    <div class="table-responsive" style="margin-bottom:10%">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Image</th>
+                    <th>Category</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Details", item.Category, new { id = item.ItemId })">
+                                <img src="@item.ImageUrl" alt="@item.Name" class="img-thumbnail" style="width: 180px; height: 180px;" />
+                            </a>
+                        </td>
+                        <td>@item.Category</td>
+                        <td>@item.Name</td>
+                        <td>@string.Format("{0:0.00} €", item.Price)</td>
+                        <td>@item.Quantity</td>
+                        <td>@string.Format("{0:0.00} €", item.Price * item.Quantity)</td>
+                        <td>
+                            @Html.ActionLink("Delete", "RemoveFromCart", "Cart",
+                                new { id = item.ItemId, category = item.Category },
+                                new { @class = "btn btn-outline-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="total-price mt-4">
+        <h3>Total Price: <span>@string.Format("{0:0.00} €", Model.Sum(i => i.Price * i.Quantity))</span></h3>
+    </div>
+
+    <div class="cart-buttons-container text-right">
+        @Html.ActionLink("Clear Cart", "ClearCart", "Cart", new { @class = "cart-button btn-sm" })
+        <button class="cart-button btn-sm">Buy</button>
+    </div>
+
+}
+
+<style>
+    .total-price {
+        text-align: right;
+        font-size: 18px;
+        font-family: Copperplate, Papyrus, fantasy;
+        font-weight: 600;
+    }
+
+    .cart-buttons-container {
+        text-align: right;
+        margin-top: 10px;
+    }
+
+    .cart-button {
+        text-decoration: none;
+        text-align: center;
+        background-color: rgb(153, 102, 51);
+        width: 200px;
+        color: black;
+        padding: 5px 15px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 15px;
+        border-radius: 5px;
+        font-family: Copperplate, Papyrus, fantasy;
+        font-weight: bold;
+    }
+
+        .cart-button:hover {
+            background-color: #362b23;
+            color: white;
+        }
+
+
+    .btn {
+        margin: 5px;
+        
+    }
+
+    .table {
+        margin-top: 30px;
+        background-color: rgb(153, 102, 51);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            text-align: center;
+            font-family: Copperplate, Papyrus, fantasy;
+            font-weight: 900;
+            background-color: rgb(153, 102, 51);
+        }
+
+        .table tbody td {
+            text-align: center;
+            vertical-align: middle;
+            font-family: Copperplate, Papyrus, fantasy;
+            font-weight: 600;
+            font-size: 15px;
+            background-color: rgb(255, 242, 194);
+        }
+
+    .text-primary {
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .text-primary:hover {
+            text-decoration: underline;
+        }
+</style>

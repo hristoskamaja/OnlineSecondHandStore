@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Online_Secondhand_Store.Models.Car>
+
+@{
+    ViewBag.Title = "Cars";
+}
+
+<link rel="stylesheet" href="~/Content/styleHome.css" />
+<link rel="stylesheet" href="~/Content/styleIndex.css?v=6.0" />
+
+<!-- Header Section -->
+<header class="header">
+    <h1>CARS</h1>
+</header>
+
+<p class="AddBtn">
+    @if (User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Add", "Create", null, new { @class = "buttons" })
+    }
+</p>
+<!-- Filter Section -->
+<div class="filter-section">
+    <div>
+        <label for="carTypeFilter" class="filter-label">Cars:</label><br />
+        @Html.DropDownList("carType", new SelectList(ViewBag.CarTypes as System.Collections.IEnumerable), new { @class = "typeFilter", id = "carTypeFilter" })
+    </div>
+
+    <!-- Range slider for price filter -->
+    <div class="form-group">
+        <label for="priceRange" class="filter-label">Price Range:</label>
+        <div class="price-range">
+            <div>
+                <label for="minPriceFilter" class="filter-label">Min Price:</label>
+                <span id="minPriceLabel">0 €</span>
+                <input type="range" id="minPriceFilter" name="minPrice" min="0" max="90000" value="0" step="500" class="form-control-range" />
+            </div>
+
+            <div>
+                <label for="maxPriceFilter" class="filter-label">Max Price:</label>
+                <span id="maxPriceLabel">90000 €</span>
+                <input type="range" id="maxPriceFilter" name="maxPrice" min="0" max="90000" value="500000" step="500" class="form-control-range" />
+            </div>
+        </div>
+    </div>
+
+    <input type="button" value="Filter" id="filterBtn" class="buttonFilter" />
+
+</div>
+
+
+
+<!-- Displaying the cards -->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card thing-card">
+                <a href="@Url.Action("Details", new { id = item.Id })" class="image-link">
+                    <img src="@item.Image" class="card-img-top thing-img" alt="Clothing Image" />
+                    <div class="overlay">
+                        <div class="overlay-text"></div>
+                    </div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Model</h5>
+                    <p class="card-text"><strong>Price:</strong> @item.Price €</p>
+                    @Html.ActionLink("Add to Cart", "AddToCart", "Cart",
+new { id = item.Id, category = "Cars", name = item.Model, price = item.Price, imageUrl = item.Image },
+new { @class = "add-to-cart-link" })
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="@Url.Action("DeleteItem", new { id = item.Id })" class="btn btn-sm btn-danger">Delete</a>
+
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<!-- jQuery Script for filtering -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Update the displayed range values as the sliders are adjusted
+        $("#minPriceFilter").on("input", function () {
+            $("#minPriceLabel").text($(this).val());
+        });
+
+        $("#maxPriceFilter").on("input", function () {
+            $("#maxPriceLabel").text($(this).val());
+        });
+
+        $("#filterBtn").click(function () {
+            var selectedType = $("#carTypeFilter").val(); // Get the selected car type
+            var minPrice = parseFloat($("#minPriceFilter").val()) || 0; // Get the minimum price, default to 0 if empty
+            var maxPrice = parseFloat($("#maxPriceFilter").val()) || Infinity; // Get the maximum price, default to Infinity if empty
+
+            // Loop through each card
+            $(".thing-card").each(function () {
+                var cardType = $(this).find(".card-title").text().trim(); // Extract the clothing type from the card
+                var cardPrice = parseFloat($(this).find(".card-text:contains('Price:')").text().replace("Price:", "").replace("ден.", "").trim()) || 0; // Extract the price from the card
+
+                // Check if the card matches the filters
+                if ((selectedType === "All" || cardType === selectedType) &&
+                    cardPrice >= minPrice &&
+                    cardPrice <= maxPrice) {
+                    $(this).closest(".col-md-4").show(); // Show the card if it matches the criteria
+                } else {
+                    $(this).closest(".col-md-4").hide(); // Hide the card if it doesn't match
+                }
+            });
+        });
+    });
+</script>

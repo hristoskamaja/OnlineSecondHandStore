@@ -1,0 +1,83 @@
+﻿/* Styling for Edit container */
+.edit-container {
+    background-color: rgb(255, 242, 194);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 70%; /* Adjust the width as needed */
+    font-family: Copperplate, Papyrus, fantasy;
+}
+
+/* Title styling */
+.edit-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: black;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+/* Form styling */
+.form-horizontal .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.control-label {
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    color: rgb(153, 102, 51);
+    font-weight: bold;
+}
+
+.col-md-10 {
+    width: 80%;
+}
+
+.form-control {
+    border: 1px solid rgb(153, 102, 51);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: none;
+    transition: box-shadow 0.3s ease;
+}
+
+    .form-control:focus {
+        box-shadow: 0 0 5px rgba(153, 102, 51, 0.5);
+        border-color: rgb(153, 102, 51);
+    }
+
+/* Styling for buttons */
+.btn-default {
+    background-color: rgb(153, 102, 51);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+    .btn-default:hover {
+        background-color: #362b23;
+        color: white;
+    }
+
+/* Back to List link styling */
+.back-to-list {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: rgb(153, 102, 51);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .back-to-list:hover {
+        color: #362b23;
+    }

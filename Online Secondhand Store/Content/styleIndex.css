@@ -1,0 +1,257 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(207, 207, 114);
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Ова ќе спречи хоризонтално скролување ако некои елементи излегуваат надвор */
+}
+
+.row {
+    background-color: rgb(255, 242, 194);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    margin: 21px auto;
+    padding: 20px;
+}
+
+/*CARDS*/
+.thing-card {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(207, 207, 114, 0.5);
+}
+
+.image-link {
+    position: relative;
+    display: block;
+    text-decoration: none;
+}
+
+.thing-img {
+    width: 100%;
+    height: 400px; 
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.card-title {
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight:600;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Полупроѕирна темна позадина */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.image-link:hover .overlay {
+    opacity: 1;
+}
+
+.image-link:hover .thing-img {
+    transform: scale(1.03); /* Малку зголемување на сликата */
+}
+
+
+
+
+
+/*Buttons*/
+.buttons {
+    text-decoration: none; /* За да го отстраниш подвлекувањето */
+    background-color: rgb(153, 102, 51);
+    width: 200px;
+    color: black;
+    padding: 15px 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+}
+
+    .buttons:hover {
+        background-color: #362b23;
+        color: white;
+    }
+
+
+.buttonFilter {
+    text-decoration: none; /* За да го отстраниш подвлекувањето */
+    background-color: rgb(153, 102, 51);
+    width: 100px;
+    color: black;
+    padding: 15px 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+}
+
+    .buttonFilter:hover {
+        background-color: #362b23;
+        color: white;
+    }
+
+.AddBtn{
+    margin-bottom: 30px;
+}
+
+
+/*Add to cart btn*/
+.add-to-cart-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: rgb(153, 102, 51);
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+    .add-to-cart-link:hover {
+        background-color: #362b23;
+        color: white;
+    }
+
+    .add-to-cart-link i {
+        margin-right: 5px;
+    }
+
+
+
+/* Style for Header */
+.header {
+    padding: 20px 0;
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+    font-family: Copperplate, Papyrus, fantasy;
+}
+/* Filter container styling */
+.filter-section {
+    background-color: rgb(255, 242, 194);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20%; 
+}
+
+/* Dropdown styling */
+.typeFilter {
+    background-color: rgb(153, 102, 51);
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    color: #fff;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 16px;
+    width: 150%; /* Full width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+/* Labels */
+.filter-label {
+    font-family: Copperplate, Papyrus, fantasy;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* Price range sliders */
+.price-range {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Space between sliders */
+}
+
+    .price-range input {
+        width: 150%; /* Full width of the sliders */
+    }
+
+    .price-range span {
+        font-family: Copperplate, Papyrus, fantasy;
+        font-size: 16px;
+        color: black;
+        display: inline-block;
+        width: 80px; /* Ensure labels have consistent width */
+    }
+
+
+/* Filter button styling */
+.buttonFilter {
+    background-color: rgb(153, 102, 51);
+    color: white;
+    border: none;
+    padding: 20px;
+    margin: 20px;
+    width: 10%;
+    height: 20%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position:relative;
+    top:27px;
+}
+
+    .buttonFilter:hover {
+        background-color: #362b23;
+    }
+
+
+    /*SIGN CARD BUTTON*/
+.btn-group {
+    display: flex;
+    justify-content: space-evenly; /* This ensures even spacing between buttons */
+    gap: 10px; /* Add some spacing between buttons */
+}
+
+
+.add-to-car-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 5px; /* Adds space between Add to Cart and Edit/Delete buttons */
+}
+
+
+    .add-to-car-btn:hover {
+        background-color: #218838; /* Потемнување при наведување */
+        transform: scale(1.05); /* Лагано зголемување на големината при наведување */
+    }

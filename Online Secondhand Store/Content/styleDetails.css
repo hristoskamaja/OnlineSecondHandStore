@@ -1,0 +1,57 @@
+﻿.content-class {
+    display: flex;
+    justify-content: space-between;
+}
+
+.picture-left img {
+    width: 600px;
+    height: 600px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.text-right {
+    width: 600px;
+    height: 600px;
+}
+
+    .text-right dt {
+        font-weight: bold;
+        color: black;
+        margin-top: 10px;
+        font-family: Copperplate, Papyrus, fantasy;
+    }
+
+    .text-right dd {
+        margin-bottom: 10px;
+        padding-left: 10px;
+        font-size: 1.1em;
+        font-family: Arial, sans-serif;
+        background-color: rgb(207, 207, 114);
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+/* Styling for action buttons */
+.details-actions {
+    position: relative;
+    left: 63%;
+    text-decoration: none; /* За да го отстраниш подвлекувањето */
+    background-color: rgb(153, 102, 51);
+    width: 100px;
+    color: black;
+    padding: 15px 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+}
+
+.details-actions:hover {
+    background-color: #362b23;
+    color: white;
+}

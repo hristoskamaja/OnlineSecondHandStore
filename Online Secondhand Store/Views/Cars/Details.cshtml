@@ -1,0 +1,54 @@
+﻿@model Online_Secondhand_Store.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+<link rel="stylesheet" href="~/Content/styleHome.css?v=3.0" />
+<link rel="stylesheet" href="~/Content/styleIndex.css?v=5.0" />
+<link rel="stylesheet" href="~/Content/styleDetails.css?v=2.0" />
+<link href="~/Content/cardButton.js"/>
+
+<div class="row">
+    <h2 class="header">Details</h2>
+    <dl class="content-class">
+
+        <dl class="picture-left">
+            <dd><img src="@Model.Image" alt="Image" /></dd>
+        </dl>
+        <dl class="text-right">
+            <dt>@Html.DisplayNameFor(model => model.Model)</dt>
+            <dd>@Html.DisplayFor(model => model.Model)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Price)</dt>
+            <dd>@Html.DisplayFor(model => model.Price) € </dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Year)</dt>
+            <dd>@Html.DisplayFor(model => model.Year)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.FuelType)</dt>
+            <dd>@Html.DisplayFor(model => model.FuelType) </dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Mileage)</dt>
+            <dd>@Html.DisplayFor(model => model.Mileage)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Condition)</dt>
+            <dd>@Html.DisplayFor(model => model.Condition)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+            <dd>@Html.DisplayFor(model => model.Description)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.PostedDate)</dt>
+            <dd>@Html.DisplayFor(model => model.PostedDate)</dd>
+        </dl>
+    </dl>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "details-actions" })
+        @Html.ActionLink("Add to Cart", "AddToCart", "Cart",
+     new { id = Model.Id, category = "Cars", name = Model.Model, price = Model.Price, imageUrl = Model.Image },
+     new { @class = "details-actions" })
+    </div>
+</div>
+</div>
+
+

@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        /* Основно мени */
+
+        .navbar {
+            background-color: rgb(153, 102, 51);
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-family: Copperplate, Papyrus, fantasy;
+            width: 400px;
+            font-weight: 400;
+            font-size: 30px;
+            color: black;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .nav-link {
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: all 0.3s ease;
+            color: black;
+            font-family: Copperplate, Papyrus, fantasy;
+            font-weight: 800;
+        }
+
+            .nav-link:hover {
+                background-color: #9c7b56;
+                color: #fff;
+                border-radius: 5px;
+            }
+
+        /* Подменија */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #4a3d31;
+            border-radius: 5px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            min-width: 180px;
+        }
+
+            .submenu li {
+                display: block;
+            }
+
+            .submenu a {
+                color: #fff;
+                padding: 10px 20px;
+                text-decoration: none;
+                display: block;
+                font-size: 16px;
+            }
+
+                .submenu a:hover {
+                    background-color: #9c7b56;
+                    color: #fff;
+                }
+
+        li:hover .submenu {
+            display: block;
+        }
+
+        .nav-link .fas {
+            font-size: 24px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: rgb(153, 102, 51); /* Иста боја како на navbar за конзистентност */
+            color: black;
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+            footer p {
+                margin: 0;
+                font-size: 16px;
+            }
+
+            footer a {
+                color: black;
+                text-decoration: none;
+                margin: 0 10px;
+                font-weight: 600;
+            }
+
+                footer a:hover {
+                    color: wheat;
+                }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
+        <div class="container">
+            @Html.ActionLink("NewOld Things", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>
+                        <a href="#" class="nav-link">Shop</a>
+                        <ul class="submenu">
+                            <li>@Html.ActionLink("Clothes", "Index", "Clothings", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Cars", "Index", "Cars", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Furniture", "Index", "Furnitures", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Computer & IT Equipment", "Index", "ComputerAndITEquipments", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Electrical Appliances", "Index", "ElectricalAppliances", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    @{
+        var currentAction = ViewContext.RouteData.Values["action"].ToString();
+        var currentController = ViewContext.RouteData.Values["controller"].ToString();
+    }
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    @if (currentAction != "Delete" && currentAction != "DeleteItem") // Променето на '&&'
+    {
+        <footer class="container-fluid">
+            <p>
+                @Html.ActionLink("About", "About", "Home") |
+                @Html.ActionLink("Contact", "Contact", "Home") |
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a><br /><br />
+                <div style="font-family: Copperplate, Papyrus, fantasy;">NewOld Things</div>
+                &copy; @DateTime.Now.Year - My ASP.NET Application
+            </p>
+        </footer>
+    }
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
